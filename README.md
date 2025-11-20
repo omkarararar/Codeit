@@ -5,7 +5,7 @@ Codeit is a simple real-time code collaboration app that lets multiple people ed
 ## Features
 
 - Create or join a shared room with a room ID  
-- Live code editing with real-time syncing  
+- Live code editing with real-time syncing for multiple users 
 - Clean and minimal interface  
 - CodeMirror editor  
 - No login or authentication needed  
