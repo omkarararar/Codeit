@@ -1,0 +1,57 @@
+# Docker Compose configuration for Codeit with Redis and horizontal scaling
+
+services:
+  # Redis service for data persistence and cross-server communication
+  redis:
+    image: redis:7-alpine
+    container_name: codeit-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - codeit-network
+
+  # Node.js server instances (can be scaled)
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - codeit-network
+    deploy:
+      replicas: 3 # Run 3 server instances by default
+
+  # nginx load balancer
+  nginx:
+    image: nginx:alpine
+    container_name: codeit-nginx
+    ports:
+      - "5000:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - server
+    networks:
+      - codeit-network
+
+volumes:
+  redis-data:
+    driver: local
+
+networks:
+  codeit-network:
+    driver: bridge
