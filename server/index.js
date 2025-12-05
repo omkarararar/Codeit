@@ -20,7 +20,7 @@ const subClient = redisClient.duplicate();
 // Redis helper functions for user socket mapping
 async function setUserSocket(socketId, username) {
   await redisClient.hSet('user:sockets', socketId, username);
-  await redisClient.expire('user:sockets', 86400); // 24 hour TTL
+  await redisClient.expire('user:sockets', 86400); // 24 hour time to live
 }
 
 async function getUserSocket(socketId) {
@@ -42,7 +42,7 @@ async function setRoomFile(roomId, fileId, file) {
     fileId,
     JSON.stringify(file)
   );
-  await redisClient.expire(`room:${roomId}:files`, 604800); // 7 day TTL
+  await redisClient.expire(`room:${roomId}:files`, 604800); // 7 day time to live
 }
 
 async function getRoomFiles(roomId) {

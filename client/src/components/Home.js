@@ -1,13 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import "./Home.css";
 
 function Home() {
   const [roomId, setRoomId] = useState("");
   const [username, setUsername] = useState("");
+  const containerRef = useRef(null);
 
   const navigate = useNavigate();
+
+  // Track mouse position for cursor glow effect
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (containerRef.current) {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        containerRef.current.style.setProperty('--mouse-x', `${x}%`);
+        containerRef.current.style.setProperty('--mouse-y', `${y}%`);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const generateRoomId = (e) => {
     e.preventDefault();
@@ -39,25 +56,19 @@ function Home() {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="home-container" ref={containerRef}>
       <div className="row justify-content-center align-items-center min-vh-100">
         <div className="col-12 col-md-6">
-          <div className="card shadow-sm p-2 mb-5 bg-secondary rounded">
-            <div className="card-body text-center bg-dark">
-              {/* <img
-                src="/images/codewith.png"
-                alt="Logo"
-                className="img-fluid mx-auto d-block"
-                style={{ maxWidth: "150px" }}
-              /> */}
-              <h4 className="card-title text-light mb-4">Enter the ROOM ID</h4>
+          <div className="card shadow-sm p-2 mb-5 rounded home-card">
+            <div className="card-body text-center">
+              <h4 className="card-title mb-4 home-title">Enter the ROOM ID</h4>
 
               <div className="form-group">
                 <input
                   type="text"
                   value={roomId}
                   onChange={(e) => setRoomId(e.target.value)}
-                  className="form-control mb-2"
+                  className="form-control mb-2 home-input"
                   placeholder="ROOM ID"
                   onKeyUp={handleInputEnter}
                 />
@@ -67,14 +78,14 @@ function Home() {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="form-control mb-2"
+                  className="form-control mb-2 home-input"
                   placeholder="USERNAME"
                   onKeyUp={handleInputEnter}
                 />
               </div>
               <button
                 onClick={joinRoom}
-                className="btn btn-success btn-lg btn-block"
+                className="btn btn-lg btn-block home-join-btn"
               >
                 JOIN
               </button>
@@ -82,8 +93,7 @@ function Home() {
                 Don't have an existing room ID? Create{""}
                 <span
                   onClick={generateRoomId}
-                  className=" text-success p-2"
-                  style={{ cursor: "pointer" }}
+                  className="home-new-room"
                 >
                   {" "}
                   New Room

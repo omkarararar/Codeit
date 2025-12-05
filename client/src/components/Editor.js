@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import "codemirror/mode/javascript/javascript";
-import "codemirror/theme/dracula.css";
 import "codemirror/addon/edit/closetag";
 import "codemirror/addon/edit/closebrackets";
 import "codemirror/lib/codemirror.css";
 import CodeMirror from "codemirror";
 import { ACTIONS } from "../Actions";
+import "./codeit-purple-theme.css";
 
 function Editor({ socketRef, roomId, onCodeChange, fileId, content }) {
   const editorRef = useRef(null);
@@ -16,7 +16,7 @@ function Editor({ socketRef, roomId, onCodeChange, fileId, content }) {
         document.getElementById("realtimeEditor"),
         {
           mode: { name: "javascript", json: true },
-          theme: "dracula",
+          theme: "codeit-purple",
           autoCloseTags: true,
           autoCloseBrackets: true,
           lineNumbers: true,

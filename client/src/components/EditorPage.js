@@ -11,6 +11,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import "./EditorPage.css";
 
 function EditorPage() {
   const [clients, setClients] = useState([]);
@@ -205,10 +206,10 @@ function EditorPage() {
   const activeFile = files.find((f) => f.id === activeFileId);
 
   return (
-    <div className="container-fluid vh-100">
+    <div className="container-fluid vh-100 editor-page-container">
       <div className="row h-100">
         <div
-          className="col-md-2 bg-dark text-light d-flex flex-column h-100"
+          className="col-md-2 bg-dark text-light d-flex flex-column h-100 editor-sidebar"
           style={{ boxShadow: "2px 0px 4px rgba(0, 0, 0, 0.1)" }}
         >
           <div style={{ height: '2rem' }}></div>

@@ -1,5 +1,29 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
+import "./FileExplorer.css";
+
+// Helper function to get file icon based on extension
+const getFileIcon = (filename) => {
+    const ext = filename.split('.').pop()?.toLowerCase();
+    const icons = {
+        'js': '🟨',
+        'jsx': '⚛️',
+        'ts': '🔷',
+        'tsx': '⚛️',
+        'html': '🌐',
+        'css': '🎨',
+        'json': '📋',
+        'py': '🐍',
+        'java': '☕',
+        'cpp': '⚙️',
+        'c': '⚙️',
+        'go': '🐹',
+        'rs': '🦀',
+        'md': '📝',
+        'txt': '📄',
+    };
+    return icons[ext] || '📄';
+};
 
 function FileExplorer({ files, activeFile, onFileSelect, onFileCreate, onFileDelete, onFileRename, onFileImport }) {
     const [isCreating, setIsCreating] = useState(false);
@@ -161,7 +185,8 @@ function FileExplorer({ files, activeFile, onFileSelect, onFileCreate, onFileDel
                                         onClick={() => onFileSelect(file.id)}
                                         title={`Click to open ${file.name}`}
                                     >
-                                        📄 {file.name}
+                                        <span className="file-icon">{getFileIcon(file.name)}</span>
+                                        <span className="file-name-text">{file.name}</span>
                                     </span>
                                     <div className="file-actions">
                                         <button

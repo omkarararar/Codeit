@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "Yadvendra Shukla",
+  "author": "Omkar Panchawadkar",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",

@@ -1,0 +1,161 @@
+/* Custom CodeMirror Theme - Dark Purple */
+
+.cm-s-codeit-purple {
+    background: #1a0b2e;
+    color: #e2e8f0;
+}
+
+.cm-s-codeit-purple .CodeMirror-gutters {
+    background: #16082a;
+    border-right: 1px solid #2d1b4e;
+}
+
+.cm-s-codeit-purple .CodeMirror-linenumber {
+    color: #7c3aed;
+}
+
+.cm-s-codeit-purple .CodeMirror-cursor {
+    border-left: 2px solid #a78bfa;
+    animation: blink 1s step-end infinite;
+}
+
+.cm-s-codeit-purple .CodeMirror-selected {
+    background: rgba(139, 92, 246, 0.2);
+}
+
+.cm-s-codeit-purple .CodeMirror-line::selection,
+.cm-s-codeit-purple .CodeMirror-line>span::selection,
+.cm-s-codeit-purple .CodeMirror-line>span>span::selection {
+    background: rgba(139, 92, 246, 0.3);
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Syntax highlighting with purple theme */
+.cm-s-codeit-purple .cm-keyword {
+    color: #c084fc;
+    font-weight: 600;
+}
+
+.cm-s-codeit-purple .cm-atom {
+    color: #f0abfc;
+}
+
+.cm-s-codeit-purple .cm-number {
+    color: #e9d5ff;
+}
+
+.cm-s-codeit-purple .cm-def {
+    color: #a78bfa;
+}
+
+.cm-s-codeit-purple .cm-variable {
+    color: #ddd6fe;
+}
+
+.cm-s-codeit-purple .cm-variable-2 {
+    color: #c4b5fd;
+}
+
+.cm-s-codeit-purple .cm-variable-3 {
+    color: #a78bfa;
+}
+
+.cm-s-codeit-purple .cm-property {
+    color: #e9d5ff;
+}
+
+.cm-s-codeit-purple .cm-operator {
+    color: #f0abfc;
+}
+
+.cm-s-codeit-purple .cm-comment {
+    color: #6b21a8;
+    font-style: italic;
+}
+
+.cm-s-codeit-purple .cm-string {
+    color: #86efac;
+}
+
+.cm-s-codeit-purple .cm-string-2 {
+    color: #6ee7b7;
+}
+
+.cm-s-codeit-purple .cm-meta {
+    color: #a78bfa;
+}
+
+.cm-s-codeit-purple .cm-qualifier {
+    color: #c084fc;
+}
+
+.cm-s-codeit-purple .cm-builtin {
+    color: #e9d5ff;
+}
+
+.cm-s-codeit-purple .cm-bracket {
+    color: #ddd6fe;
+}
+
+.cm-s-codeit-purple .cm-tag {
+    color: #f0abfc;
+}
+
+.cm-s-codeit-purple .cm-attribute {
+    color: #c4b5fd;
+}
+
+.cm-s-codeit-purple .cm-error {
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Active line highlight */
+.cm-s-codeit-purple .CodeMirror-activeline-background {
+    background: rgba(139, 92, 246, 0.1);
+}
+
+/* Matching brackets */
+.cm-s-codeit-purple .CodeMirror-matchingbracket {
+    color: #fde047 !important;
+    background: rgba(253, 224, 71, 0.2);
+    font-weight: bold;
+}
+
+.cm-s-codeit-purple .CodeMirror-nonmatchingbracket {
+    color: #fca5a5 !important;
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* Scrollbar styling */
+.cm-s-codeit-purple .CodeMirror-scrollbar-filler,
+.cm-s-codeit-purple .CodeMirror-gutter-filler {
+    background-color: #1a0b2e;
+}
+
+.cm-s-codeit-purple .CodeMirror-vscrollbar::-webkit-scrollbar,
+.cm-s-codeit-purple .CodeMirror-hscrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.cm-s-codeit-purple .CodeMirror-vscrollbar::-webkit-scrollbar-track,
+.cm-s-codeit-purple .CodeMirror-hscrollbar::-webkit-scrollbar-track {
+    background: #16082a;
+}
+
+.cm-s-codeit-purple .CodeMirror-vscrollbar::-webkit-scrollbar-thumb,
+.cm-s-codeit-purple .CodeMirror-hscrollbar::-webkit-scrollbar-thumb {
+    background: #7c3aed;
+    border-radius: 4px;
+}
+
+.cm-s-codeit-purple .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover,
+.cm-s-codeit-purple .CodeMirror-hscrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a78bfa;
+}

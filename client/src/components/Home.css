@@ -1,0 +1,145 @@
+/* Home Page - Interactive Cursor Glow Effect */
+.home-container {
+    position: relative;
+    min-height: 100vh;
+    background: #000000;
+    overflow: hidden;
+}
+
+/* Radial gradient that follows cursor */
+.home-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(29, 78, 216, 0.15),
+            transparent 40%);
+    z-index: 1;
+}
+
+/* Secondary glow layer for more depth */
+.home-container::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(59, 130, 246, 0.1),
+            transparent 50%);
+    z-index: 1;
+}
+
+/* Ensure content is above the glow effects */
+.home-container>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhanced card styling for dark theme */
+.home-card {
+    background: rgba(17, 24, 39, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    transition: all 0.3s ease;
+}
+
+.home-card:hover {
+    border-color: rgba(59, 130, 246, 0.4) !important;
+    box-shadow: 0 12px 48px rgba(59, 130, 246, 0.2) !important;
+    transform: translateY(-2px);
+}
+
+/* Input fields with glow effect */
+.home-input {
+    background: rgba(31, 41, 55, 0.6) !important;
+    border: 1px solid rgba(75, 85, 99, 0.5) !important;
+    color: #f3f4f6 !important;
+    transition: all 0.3s ease;
+}
+
+.home-input:focus {
+    background: rgba(31, 41, 55, 0.8) !important;
+    border-color: rgba(59, 130, 246, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1),
+        0 0 20px rgba(59, 130, 246, 0.2) !important;
+    color: #ffffff !important;
+}
+
+.home-input::placeholder {
+    color: rgba(156, 163, 175, 0.6);
+}
+
+/* Enhanced button with glow */
+.home-join-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.home-join-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.6);
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
+}
+
+.home-join-btn:active {
+    transform: translateY(0);
+}
+
+/* New Room link with glow effect */
+.home-new-room {
+    color: #60a5fa !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.home-new-room:hover {
+    color: #93c5fd !important;
+    background: rgba(59, 130, 246, 0.1);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Title glow effect */
+.home-title {
+    color: #f3f4f6 !important;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Ambient particles effect (optional enhancement) */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(59, 130, 246, 0.4);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+}
