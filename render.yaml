@@ -1,0 +1,40 @@
+services:
+  # Backend Node.js server
+  - type: web
+    name: codeit-server
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: REDIS_HOST
+        fromService:
+          type: redis
+          name: codeit-redis
+          property: host
+      - key: REDIS_PORT
+        fromService:
+          type: redis
+          name: codeit-redis
+          property: port
+      - key: PORT
+        value: 10000
+
+  # Frontend React app
+  - type: web
+    name: codeit-frontend
+    env: static
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: ./client/build
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        fromService:
+          type: web
+          name: codeit-server
+          property: host
+
+  # Redis for data persistence
+  - type: redis
+    name: codeit-redis
+    plan: free
+    maxmemoryPolicy: noeviction

@@ -7,7 +7,13 @@ const { createAdapter } = require("@socket.io/redis-adapter");
 const ACTIONS = require("./Actions");
 
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "*", // Allow all origins for now (you can restrict this later)
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
 
 // Redis client setup
 const redisClient = createClient({
