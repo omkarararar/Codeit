@@ -1,4 +1,4 @@
-/* Home Page - Interactive Cursor Glow Effect */
+/* Home Page - SplashCursor Effect Background */
 .home-container {
     position: relative;
     min-height: 100vh;
@@ -6,40 +6,10 @@
     overflow: hidden;
 }
 
-/* Radial gradient that follows cursor */
-.home-container::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgba(29, 78, 216, 0.15),
-            transparent 40%);
-    z-index: 1;
-}
-
-/* Secondary glow layer for more depth */
-.home-container::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgba(59, 130, 246, 0.1),
-            transparent 50%);
-    z-index: 1;
-}
-
-/* Ensure content is above the glow effects */
-.home-container>* {
+/* Ensure content is above the splash cursor effect */
+.home-container>.row {
     position: relative;
-    z-index: 2;
+    z-index: 100;
 }
 
 /* Enhanced card styling for dark theme */

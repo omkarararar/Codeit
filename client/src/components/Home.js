@@ -1,30 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import SplashCursor from "./SplashCursor";
 import "./Home.css";
 
 function Home() {
   const [roomId, setRoomId] = useState("");
   const [username, setUsername] = useState("");
-  const containerRef = useRef(null);
 
   const navigate = useNavigate();
-
-  // Track mouse position for cursor glow effect
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (containerRef.current) {
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        containerRef.current.style.setProperty('--mouse-x', `${x}%`);
-        containerRef.current.style.setProperty('--mouse-y', `${y}%`);
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   const generateRoomId = (e) => {
     e.preventDefault();
@@ -56,7 +41,8 @@ function Home() {
   };
 
   return (
-    <div className="home-container" ref={containerRef}>
+    <div className="home-container">
+      <SplashCursor />
       <div className="row justify-content-center align-items-center min-vh-100">
         <div className="col-12 col-md-6">
           <div className="card shadow-sm p-2 mb-5 rounded home-card">
@@ -108,3 +94,4 @@ function Home() {
 }
 
 export default Home;
+

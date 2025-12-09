@@ -8,6 +8,7 @@ export const initSocket = async () => {
         transports: ['websocket'],
     };
     // Use production backend URL or fallback to localhost for development
-    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://codeit-o9bo.onrender.com';
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
     return io(backendUrl, options);
 }
+
