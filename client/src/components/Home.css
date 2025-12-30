@@ -1,4 +1,4 @@
-/* Home Page - SplashCursor Effect Background */
+/* Home Page - FloatingLines Effect Background */
 .home-container {
     position: relative;
     min-height: 100vh;
@@ -6,10 +6,49 @@
     overflow: hidden;
 }
 
-/* Ensure content is above the splash cursor effect */
+/* Ensure content is above the floating lines effect */
 .home-container>.row {
     position: relative;
     z-index: 100;
+}
+
+/* Main Title Styling */
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 25%, #D946EF 50%, #F0ABFC 75%, #8B5CF6 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    animation: gradient-shift 4s ease infinite, title-glow 2s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+    filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.5));
+}
+
+@keyframes gradient-shift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes title-glow {
+    from {
+        filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.4));
+    }
+
+    to {
+        filter: drop-shadow(0 0 40px rgba(217, 70, 239, 0.7));
+    }
 }
 
 /* Enhanced card styling for dark theme */

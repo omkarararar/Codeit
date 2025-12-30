@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import SplashCursor from "./SplashCursor";
+import FloatingLines from "./FloatingLines";
 import "./Home.css";
 
 function Home() {
@@ -42,9 +42,21 @@ function Home() {
 
   return (
     <div className="home-container">
-      <SplashCursor />
+      <FloatingLines
+        linesGradient={["#8B5CF6", "#A855F7", "#D946EF", "#F0ABFC"]}
+        enabledWaves={["top", "middle", "bottom"]}
+        lineCount={[8, 6, 4]}
+        lineDistance={[6, 5, 4]}
+        animationSpeed={0.8}
+        interactive={true}
+        bendRadius={5.0}
+        bendStrength={-0.5}
+        parallax={true}
+        parallaxStrength={0.2}
+      />
       <div className="row justify-content-center align-items-center min-vh-100">
         <div className="col-12 col-md-6">
+          <h1 className="main-title">Codeit : Code Together!</h1>
           <div className="card shadow-sm p-2 mb-5 rounded home-card">
             <div className="card-body text-center">
               <h4 className="card-title mb-4 home-title">Enter the ROOM ID</h4>
